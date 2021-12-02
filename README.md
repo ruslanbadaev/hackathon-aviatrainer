@@ -1,1 +1,1 @@
-# hackathon-aviatrainer
+# normandy-aviatrainer
