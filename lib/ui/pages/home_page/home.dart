@@ -26,12 +26,17 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Text('NORMANDY Avia Trainer', style: TextStyle(color: Colors.blueAccent, fontWeight: FontWeight.bold)),
+        title: Text('NORMANDY Avia Trainer',
+            style: TextStyle(
+                color: Colors.blueAccent, fontWeight: FontWeight.bold)),
         actions: [
           Center(
             child: Text(
               "Очки: 256",
-              style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 18.0),
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18.0),
               textAlign: TextAlign.center,
             ),
           ),
@@ -42,7 +47,8 @@ class HomePage extends StatelessWidget {
           IconButton(
             onPressed: () => {
               found.kIsWeb
-                  ? _launchURL('https://sbcode.net/extra_html/physics-heli.html')
+                  ? _launchURL(
+                      'https://sbcode.net/extra_html/physics-heli.html')
                   : Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => ProfilePage(),
@@ -102,7 +108,10 @@ class HomePage extends StatelessWidget {
                   children: [
                     Text(
                       "Выберите урок:",
-                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 30.0),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 30.0),
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -163,7 +172,8 @@ class HomePage extends StatelessWidget {
     showDialog(
       context: context,
       builder: (sheetContext) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(24.0))),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(24.0))),
         // contentPadding: EdgeInsets.only(top: 10.0),
         content: QuizOptionsDialog(
           category: category,

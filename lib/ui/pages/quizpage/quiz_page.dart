@@ -10,14 +10,16 @@ class QuizPage extends StatefulWidget {
   final List<Question> questions;
   final Category category;
 
-  const QuizPage({Key? key, required this.questions, required this.category}) : super(key: key);
+  const QuizPage({Key? key, required this.questions, required this.category})
+      : super(key: key);
 
   @override
   _QuizPageState createState() => _QuizPageState();
 }
 
 class _QuizPageState extends State<QuizPage> {
-  final TextStyle _questionStyle = TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.black);
+  final TextStyle _questionStyle = TextStyle(
+      fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.black);
 
   int _currentIndex = 0;
   bool _showInfo = true;
@@ -44,14 +46,16 @@ class _QuizPageState extends State<QuizPage> {
               context: context,
               builder: (_) {
                 return AlertDialog(
-                  content: Text("Вы действительно хотите покинуть тестирование?"),
+                  content:
+                      Text("Вы действительно хотите покинуть тестирование?"),
                   title: Text("Внимание!"),
                   actions: <Widget>[
                     FlatButton(
                       child: Text("Да"),
                       onPressed: () {
                         Navigator.pop(context, false);
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => HomePage()));
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (_) => HomePage()));
                       },
                     ),
                     FlatButton(
@@ -71,7 +75,8 @@ class _QuizPageState extends State<QuizPage> {
         ),
         iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.transparent,
-        title: Text(widget.category.name, style: TextStyle(color: Colors.black)),
+        title:
+            Text(widget.category.name, style: TextStyle(color: Colors.black)),
         elevation: 0,
       ),
       body: _showInfo
@@ -82,10 +87,14 @@ class _QuizPageState extends State<QuizPage> {
                   children: [
                     Container(
                       width: 600,
-                      padding: EdgeInsets.symmetric(horizontal: 36, vertical: 12),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 36, vertical: 12),
                       child: Text(
                         question.info,
-                        style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w700),
+                        style: TextStyle(
+                            fontSize: 16.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w700),
                       ),
                     ),
                     SizedBox(
@@ -104,12 +113,16 @@ class _QuizPageState extends State<QuizPage> {
                         child: RaisedButton(
                           elevation: 0,
                           padding: MediaQuery.of(context).size.width > 800
-                              ? const EdgeInsets.symmetric(vertical: 20.0, horizontal: 64.0)
+                              ? const EdgeInsets.symmetric(
+                                  vertical: 20.0, horizontal: 64.0)
                               : null,
                           child: Text(
                             "Перейти к вопросу",
                             style: MediaQuery.of(context).size.width > 800
-                                ? TextStyle(fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.w700)
+                                ? TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w700)
                                 : TextStyle(color: Colors.white),
                           ),
                           onPressed: () => {
@@ -146,16 +159,22 @@ class _QuizPageState extends State<QuizPage> {
                                   children: <Widget>[
                                     CircleAvatar(
                                       backgroundColor: Colors.white70,
-                                      child: Text("${_currentIndex + 1}/${widget.questions.length}"),
+                                      child: Text(
+                                          "${_currentIndex + 1}/${widget.questions.length}"),
                                     ),
                                     SizedBox(width: 16.0),
                                     Expanded(
                                       child: Text(
-                                        HtmlUnescape().convert(widget.questions[_currentIndex].question),
+                                        HtmlUnescape().convert(widget
+                                            .questions[_currentIndex].question),
                                         softWrap: true,
-                                        style: MediaQuery.of(context).size.width > 800
-                                            ? _questionStyle.copyWith(fontSize: 16.0)
-                                            : _questionStyle.copyWith(color: Colors.black),
+                                        style:
+                                            MediaQuery.of(context).size.width >
+                                                    800
+                                                ? _questionStyle.copyWith(
+                                                    fontSize: 16.0)
+                                                : _questionStyle.copyWith(
+                                                    color: Colors.black),
                                       ),
                                     ),
                                   ],
@@ -170,19 +189,30 @@ class _QuizPageState extends State<QuizPage> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Container(
                                             decoration: BoxDecoration(
-                                                color: Colors.grey[200], borderRadius: BorderRadius.circular(10)),
+                                                color: Colors.grey[200],
+                                                borderRadius:
+                                                    BorderRadius.circular(10)),
                                             child: RadioListTile<String>(
                                               title: Text(
-                                                HtmlUnescape().convert("$option"),
-                                                style: MediaQuery.of(context).size.width > 800
+                                                HtmlUnescape()
+                                                    .convert("$option"),
+                                                style: MediaQuery.of(context)
+                                                            .size
+                                                            .width >
+                                                        800
                                                     ? TextStyle(fontSize: 16.0)
-                                                    : TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                                                    : TextStyle(
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.w500),
                                               ),
-                                              groupValue: _answers[_currentIndex],
+                                              groupValue:
+                                                  _answers[_currentIndex],
                                               value: option,
                                               onChanged: (value) {
                                                 setState(() {
-                                                  _answers[_currentIndex] = option;
+                                                  _answers[_currentIndex] =
+                                                      option;
                                                 });
                                               },
                                             ),
@@ -211,12 +241,18 @@ class _QuizPageState extends State<QuizPage> {
                       child: RaisedButton(
                         elevation: 0,
                         padding: MediaQuery.of(context).size.width > 800
-                            ? const EdgeInsets.symmetric(vertical: 20.0, horizontal: 64.0)
+                            ? const EdgeInsets.symmetric(
+                                vertical: 20.0, horizontal: 64.0)
                             : null,
                         child: Text(
-                          _currentIndex == (widget.questions.length - 1) ? "Принять" : "Следующий",
+                          _currentIndex == (widget.questions.length - 1)
+                              ? "Принять"
+                              : "Следующий",
                           style: MediaQuery.of(context).size.width > 800
-                              ? TextStyle(fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.w700)
+                              ? TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700)
                               : TextStyle(color: Colors.white),
                         ),
                         onPressed: _nextSubmit,
@@ -242,8 +278,9 @@ class _QuizPageState extends State<QuizPage> {
         _showInfo = true;
       });
     } else {
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (_) => FinishedQuizPage(questions: widget.questions, answers: _answers)));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (_) => FinishedQuizPage(
+              questions: widget.questions, answers: _answers)));
     }
   }
 }
