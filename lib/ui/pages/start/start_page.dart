@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:normandy_aviatrainer/models/user.dart';
 import 'package:normandy_aviatrainer/resources/api_provider.dart';
+import 'package:normandy_aviatrainer/ui/pages/home_page/home.dart';
 
 import 'package:normandy_aviatrainer/ui/pages/login/login_page.dart';
 
@@ -15,11 +16,13 @@ class StartPage extends StatefulWidget {
 
 class _StartPageState extends State<StartPage> {
   final List<MenuItem> menu = [
-    MenuItem(name: 'Обучение', isSelected: true),
-    MenuItem(name: 'Тренажер'),
-    MenuItem(name: 'Экзамен'),
-    MenuItem(name: 'Инфографика'),
+    MenuItem(name: 'Обучение', isSelected: true, page: Pages.learning),
+    MenuItem(name: 'Тренажер', page: Pages.training),
+    MenuItem(name: 'Экзамен', page: Pages.exam),
+    MenuItem(name: 'Инфографика', page: Pages.dashboard),
   ];
+
+  Pages selectedPage = Pages.learning;
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +53,7 @@ class _StartPageState extends State<StartPage> {
                           element.isSelected = false;
                         });
                         menu[index].isSelected = true;
+                        selectedPage = menu[index].page;
                       }),
                       child: Container(
                         decoration: BoxDecoration(
@@ -124,10 +128,25 @@ class _StartPageState extends State<StartPage> {
               ],
             ),
           ),
-          LearningSection(userRole: widget.user.role!)
+          getCurrentPage()
         ],
       ),
     );
+  }
+
+  Widget getCurrentPage() {
+    switch (selectedPage) {
+      case Pages.learning:
+        return LearningSection(userRole: widget.user.role!);
+      case Pages.training:
+        return LearningSection(userRole: widget.user.role!);
+      case Pages.exam:
+        return HomePage();
+      case Pages.dashboard:
+        return LearningSection(userRole: widget.user.role!);
+      default:
+        return LearningSection(userRole: widget.user.role!);
+    }
   }
 }
 
@@ -254,11 +273,20 @@ class LearningSection extends StatelessWidget {
   }
 }
 
+enum Pages {
+  learning,
+  training,
+  exam,
+  dashboard,
+}
+
 class MenuItem {
   final String name;
+  final Pages page;
 
   bool isSelected;
   MenuItem({
+    required this.page,
     required this.name,
     this.isSelected = false,
   });
