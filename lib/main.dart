@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:normandy_aviatrainer/ui/pages/login/login_page.dart';
 import 'package:normandy_aviatrainer/ui/pages/start/start_page.dart';
 
-import 'ui/pages/home_page/home.dart';
+import 'ui/pages/trainer/trainer_page.dart';
 
 void main() => {
       WidgetsFlutterBinding.ensureInitialized(),
@@ -31,8 +31,8 @@ class MyApp extends StatelessWidget {
               TargetPlatform.iOS: OpenUpwardsPageTransitionsBuilder(),
             },
           )),
+      // home: TrainerPage(),
       home: LoginPage(),
-      // home: StartPage(),
     );
   }
 }

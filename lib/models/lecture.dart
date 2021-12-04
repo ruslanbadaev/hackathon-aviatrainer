@@ -3,6 +3,7 @@ class Lecture {
   final String title;
   final String subtitle;
   final String fulltext;
+
   Lecture({
     required this.number,
     required this.title,

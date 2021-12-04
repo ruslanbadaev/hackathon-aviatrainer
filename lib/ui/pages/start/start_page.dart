@@ -7,6 +7,8 @@ import 'package:normandy_aviatrainer/ui/pages/home_page/home.dart';
 import 'package:normandy_aviatrainer/ui/pages/lecture/lecture_page.dart';
 
 import 'package:normandy_aviatrainer/ui/pages/login/login_page.dart';
+import 'package:normandy_aviatrainer/ui/pages/simulation/simulation_page.dart';
+import 'package:normandy_aviatrainer/ui/pages/trainer/trainer_page.dart';
 import 'package:normandy_aviatrainer/ui/widgets/quiz_options.dart';
 
 class StartPage extends StatefulWidget {
@@ -143,7 +145,7 @@ class _StartPageState extends State<StartPage> {
       case Pages.learning:
         return LearningSection(userRole: widget.user.role!);
       case Pages.training:
-        return LearningSection(userRole: widget.user.role!);
+        return TrainerPage();
       case Pages.exam:
         return ExamSection(userRole: widget.user.role!);
       case Pages.dashboard:
@@ -406,6 +408,10 @@ class _ExamSectionState extends State<ExamSection> {
                     ),
                 ],
               ),
+            ),
+            GestureDetector(
+              onTap: () => {},
+              child: Text('Хуяк'),
             ),
           ],
         ),
