@@ -35,7 +35,10 @@ class _QuizOptionsDialogState extends State<QuizOptionsDialog> {
         children: <Widget>[
           Text(
             "Вводный урок",
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 30.0),
+            style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w500,
+                fontSize: 30.0),
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 20.0),
@@ -44,7 +47,10 @@ class _QuizOptionsDialogState extends State<QuizOptionsDialog> {
               Text("Сложность: "),
               Text(
                 "Легкий",
-                style: TextStyle(color: Colors.green, fontWeight: FontWeight.w700, fontSize: 15.0),
+                style: TextStyle(
+                    color: Colors.green,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15.0),
               ),
             ],
           ),
@@ -53,7 +59,10 @@ class _QuizOptionsDialogState extends State<QuizOptionsDialog> {
               Text("Вопросы: "),
               Text(
                 "10",
-                style: TextStyle(color: Colors.green, fontWeight: FontWeight.w700, fontSize: 15.0),
+                style: TextStyle(
+                    color: Colors.green,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15.0),
               ),
             ],
           ),
@@ -62,7 +71,10 @@ class _QuizOptionsDialogState extends State<QuizOptionsDialog> {
               Text("Симуляция: "),
               Text(
                 "Взлет и посадка",
-                style: TextStyle(color: Colors.orange, fontWeight: FontWeight.w700, fontSize: 15.0),
+                style: TextStyle(
+                    color: Colors.orange,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15.0),
               ),
             ],
           ),
@@ -71,7 +83,10 @@ class _QuizOptionsDialogState extends State<QuizOptionsDialog> {
               Text("Условия: "),
               Text(
                 "Без погодных отклонений",
-                style: TextStyle(color: Colors.green, fontWeight: FontWeight.w700, fontSize: 15.0),
+                style: TextStyle(
+                    color: Colors.green,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15.0),
               ),
             ],
           ),
@@ -82,6 +97,7 @@ class _QuizOptionsDialogState extends State<QuizOptionsDialog> {
                   padding: const EdgeInsets.all(0.0),
                   child: ButtonTheme(
                     height: 50,
+                    buttonColor: Color(0xFF005ECC),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
                     ),
@@ -89,7 +105,8 @@ class _QuizOptionsDialogState extends State<QuizOptionsDialog> {
                     child: RaisedButton(
                       textColor: Colors.white,
                       elevation: 0.0,
-                      child: Text("Начать тестирование", style: TextStyle(fontWeight: FontWeight.bold)),
+                      child: Text("Начать тестирование",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
                       onPressed: _startQuiz,
                     ),
                   ),
@@ -117,12 +134,14 @@ class _QuizOptionsDialogState extends State<QuizOptionsDialog> {
       processing = true;
     });
     try {
-      List<Question> questions = await getQuestions(widget.category, _noOfQuestions, _difficulty);
+      List<Question> questions =
+          await getQuestions(widget.category, _noOfQuestions, _difficulty);
       Navigator.pop(context);
       if (questions.length < 1) {
         Navigator.of(context).push(MaterialPageRoute(
             builder: (_) => ErrorPage(
-                  message: "There are not enough questions in the category, with the options you selected.",
+                  message:
+                      "There are not enough questions in the category, with the options you selected.",
                 )));
         return;
       }
@@ -138,7 +157,8 @@ class _QuizOptionsDialogState extends State<QuizOptionsDialog> {
           context,
           MaterialPageRoute(
               builder: (_) => ErrorPage(
-                    message: "Can't reach the servers, \n Please check your internet connection.",
+                    message:
+                        "Can't reach the servers, \n Please check your internet connection.",
                   )));
     } catch (e) {
       Navigator.pushReplacement(
