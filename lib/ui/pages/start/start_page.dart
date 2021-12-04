@@ -3,6 +3,7 @@ import 'package:normandy_aviatrainer/models/user.dart';
 import 'package:normandy_aviatrainer/resources/api_provider.dart';
 
 import 'package:normandy_aviatrainer/ui/pages/login/login_page.dart';
+import 'package:normandy_aviatrainer/ui/pages/trainer/trainer_page.dart';
 
 class StartPage extends StatefulWidget {
   StartPage({Key? key, required this.user}) : super(key: key);
@@ -41,9 +42,7 @@ class _StartPageState extends State<StartPage> {
                 SizedBox(height: 40),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: widget.user.role == Role.admin
-                        ? menu.length
-                        : menu.length - 1,
+                    itemCount: widget.user.role == Role.admin ? menu.length : menu.length - 1,
                     itemBuilder: (ctx, index) => GestureDetector(
                       onTap: () => setState(() {
                         menu.forEach((element) {
@@ -53,20 +52,15 @@ class _StartPageState extends State<StartPage> {
                       }),
                       child: Container(
                         decoration: BoxDecoration(
-                            color: menu[index].isSelected
-                                ? Color(0xFF006EF0)
-                                : Colors.transparent,
+                            color: menu[index].isSelected ? Color(0xFF006EF0) : Colors.transparent,
                             borderRadius: BorderRadius.circular(12)),
-                        padding:
-                            EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                         margin: EdgeInsets.symmetric(vertical: 6),
                         child: Text(
                           menu[index].name,
                           style: TextStyle(
                             color: Colors.white,
-                            fontWeight: menu[index].isSelected
-                                ? FontWeight.w700
-                                : FontWeight.w400,
+                            fontWeight: menu[index].isSelected ? FontWeight.w700 : FontWeight.w400,
                             fontSize: 18,
                           ),
                         ),
@@ -124,7 +118,8 @@ class _StartPageState extends State<StartPage> {
               ],
             ),
           ),
-          LearningSection(userRole: widget.user.role!)
+          TrainerPage(),
+          // LearningSection(userRole: widget.user.role!)
         ],
       ),
     );
@@ -165,9 +160,7 @@ class LearningSection extends StatelessWidget {
                     Container(
                       width: 300,
                       height: 260,
-                      decoration: BoxDecoration(
-                          color: Color(0xFFF7F8FA),
-                          borderRadius: BorderRadius.circular(12)),
+                      decoration: BoxDecoration(color: Color(0xFFF7F8FA), borderRadius: BorderRadius.circular(12)),
                       padding: EdgeInsets.all(24),
                       // margin: EdgeInsets.all(24),
                       child: Column(
@@ -237,15 +230,17 @@ class LearningSection extends StatelessWidget {
                     Container(
                       width: 300,
                       height: 260,
-                      decoration: BoxDecoration(
-                          color: Color(0xFFF7F8FA),
-                          borderRadius: BorderRadius.circular(12)),
+                      decoration: BoxDecoration(color: Color(0xFFF7F8FA), borderRadius: BorderRadius.circular(12)),
                       padding: EdgeInsets.all(24),
                       // margin: EdgeInsets.all(24),
                       child: Image.asset('assets/plus.png'),
                     ),
                 ],
               ),
+            ),
+            GestureDetector(
+              onTap: () => {},
+              child: Text('Хуяк'),
             ),
           ],
         ),
