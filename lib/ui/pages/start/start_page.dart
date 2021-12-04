@@ -124,7 +124,7 @@ class _StartPageState extends State<StartPage> {
               ],
             ),
           ),
-          LearningSection()
+          LearningSection(userRole: widget.user.role!)
         ],
       ),
     );
@@ -134,7 +134,10 @@ class _StartPageState extends State<StartPage> {
 class LearningSection extends StatelessWidget {
   const LearningSection({
     Key? key,
+    required this.userRole,
   }) : super(key: key);
+
+  final Role userRole;
 
   @override
   Widget build(BuildContext context) {
@@ -161,7 +164,7 @@ class LearningSection extends StatelessWidget {
                   for (final lecture in lectures)
                     Container(
                       width: 300,
-                      height: 340,
+                      height: 260,
                       decoration: BoxDecoration(
                           color: Color(0xFFF7F8FA),
                           borderRadius: BorderRadius.circular(12)),
@@ -196,7 +199,7 @@ class LearningSection extends StatelessWidget {
                               fontSize: 16,
                             ),
                           ),
-                          SizedBox(height: 32),
+                          Spacer(),
                           TextButton(
                             child: Text(
                               'Просмотр',
@@ -229,7 +232,18 @@ class LearningSection extends StatelessWidget {
                           ),
                         ],
                       ),
-                    )
+                    ),
+                  if (userRole == Role.admin)
+                    Container(
+                      width: 300,
+                      height: 260,
+                      decoration: BoxDecoration(
+                          color: Color(0xFFF7F8FA),
+                          borderRadius: BorderRadius.circular(12)),
+                      padding: EdgeInsets.all(24),
+                      // margin: EdgeInsets.all(24),
+                      child: Image.asset('assets/plus.png'),
+                    ),
                 ],
               ),
             ),
