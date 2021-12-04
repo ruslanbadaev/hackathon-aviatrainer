@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:normandy_aviatrainer/models/user.dart';
 import 'package:normandy_aviatrainer/resources/api_provider.dart';
 import 'package:normandy_aviatrainer/ui/pages/home_page/home.dart';
 import 'package:normandy_aviatrainer/ui/pages/register/register_page.dart';
@@ -121,6 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(height: 24),
                     TextField(
                       controller: _passwordController,
+                      obscureText: true,
                       decoration: InputDecoration(
                         labelText: "Пароль",
                         // errorText:
@@ -169,7 +171,9 @@ class _LoginPageState extends State<LoginPage> {
                           Navigator.pushReplacement<void, void>(
                             context,
                             MaterialPageRoute<void>(
-                              builder: (BuildContext context) => StartPage(),
+                              builder: (BuildContext context) => StartPage(
+                                user: loggedUser,
+                              ),
                             ),
                           );
                         }
@@ -212,10 +216,13 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  bool auth() {
+  User loggedUser = User();
+
+  auth() {
     for (final user in users) {
       if (_loginController.text == user.name &&
           _passwordController.text == user.password) {
+        loggedUser = user;
         return true;
       }
     }

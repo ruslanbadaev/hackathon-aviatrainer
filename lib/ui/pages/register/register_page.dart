@@ -114,6 +114,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     SizedBox(height: 24),
                     TextField(
                       controller: _passwordController,
+                      obscureText: true,
                       decoration: InputDecoration(
                         labelText: "Пароль",
                         fillColor: Color(0xFFF7F8FA),

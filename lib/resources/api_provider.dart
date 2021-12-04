@@ -1,3 +1,4 @@
+import 'package:normandy_aviatrainer/models/lecture.dart';
 import 'package:normandy_aviatrainer/models/user.dart';
 
 import '../models/category.dart';
@@ -70,8 +71,41 @@ Future<List<Question>> getQuestions(
 }
 
 final List<User> users = [
-  User(name: 'admin', password: 'admin'),
-  User(name: 'ivan', password: '12345')
+  User(name: 'admin', password: 'admin', role: Role.admin),
+  User(name: 'ivan', password: '12345', role: Role.user)
+];
+
+final List<Lecture> lectures = [
+  Lecture(
+    number: '#1лекция',
+    title: 'Летчик испытатель',
+    subtitle: 'Курс про летчика испытателя',
+    fulltext: '',
+  ),
+  Lecture(
+    number: '#1лекция',
+    title: 'Летчик испытатель',
+    subtitle: 'Курс про летчика испытателя',
+    fulltext: '',
+  ),
+  Lecture(
+    number: '#1лекция',
+    title: 'Летчик испытатель',
+    subtitle: 'Курс про летчика испытателя',
+    fulltext: '',
+  ),
+  Lecture(
+    number: '#1лекция',
+    title: 'Летчик испытатель',
+    subtitle: 'Курс про летчика испытателя',
+    fulltext: '',
+  ),
+  Lecture(
+    number: '#1лекция',
+    title: 'Летчик испытатель',
+    subtitle: 'Курс про летчика испытателя',
+    fulltext: '',
+  ),
 ];
 
 

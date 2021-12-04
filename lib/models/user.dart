@@ -1,8 +1,16 @@
+enum Role {
+  admin,
+  user,
+}
+
 class User {
-  final String name;
-  final String password;
+  final String? name;
+  final String? password;
+  final Role? role;
+
   User({
-    required this.name,
-    required this.password,
+    this.name,
+    this.password,
+    this.role,
   });
 }

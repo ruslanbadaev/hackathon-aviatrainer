@@ -31,8 +31,8 @@ class MyApp extends StatelessWidget {
               TargetPlatform.iOS: OpenUpwardsPageTransitionsBuilder(),
             },
           )),
-      // home: LoginPage(),
-      home: StartPage(),
+      home: LoginPage(),
+      // home: StartPage(),
     );
   }
 }
